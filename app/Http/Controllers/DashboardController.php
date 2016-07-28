@@ -9,6 +9,6 @@ use Panel\Http\Requests;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        return 'Dashboard';
+        return view('pages.dashboard');
     }
 }
