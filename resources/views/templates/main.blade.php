@@ -20,7 +20,7 @@
                 <li role="presentation"><a href="#">DNS </a></li>
                 <li role="presentation"><a href="#">Billing <span class="badge">1 </span> </a></li>
                 <li role="presentation"><a href="#">Support </a></li>
-                <li role="presentation"><a href="#">My Account</a></li>
+                <li role="presentation"><a href="#">{{$user->name()}}</a></li>
             </ul>
         </div>
     </div>

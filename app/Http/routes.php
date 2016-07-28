@@ -1,7 +1,22 @@
 <?php
 
 
-Route::get('/',[
-    'uses' => 'DashboardController@dashboard',
-    'as' => 'dashboard',
-]);
+Route::group(['middleware' => ['auth']],function(){
+    Route::get('/',[
+        'uses' => 'DashboardController@dashboard',
+        'as' => 'dashboard',
+    ]);
+});
+
+$this->get('login', 'Auth\AuthController@showLoginForm');
+$this->post('login', 'Auth\AuthController@login');
+$this->get('logout', 'Auth\AuthController@logout');
+
+// Registration Routes...
+//$this->get('register', 'Auth\AuthController@showRegistrationForm');
+//$this->post('register', 'Auth\AuthController@register');
+
+// Password Reset Routes...
+//$this->get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+//$this->post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+//$this->post('password/reset', 'Auth\PasswordController@reset');
