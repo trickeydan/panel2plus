@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    //use Encryptable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,9 +26,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $encrypted = [
-        'first_name',
-        'last_name',
+    protected $encryptable = [
+
     ];
 
     public function name(){

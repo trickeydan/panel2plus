@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') | {{config('text.site_title')}}</title>
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 
 <body>
@@ -15,12 +16,20 @@
             <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
         <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav">
-                <li class="active" role="presentation"><a href="{{route('dashboard')}}">Dashboard </a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active" role="presentation"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>&nbsp;Dashboard </a></li>
                 <li role="presentation"><a href="#">DNS </a></li>
                 <li role="presentation"><a href="#">Billing <span class="badge">1 </span> </a></li>
                 <li role="presentation"><a href="#">Support </a></li>
-                <li role="presentation"><a href="#">{{$user->name()}}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;{{$user->name()}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+                        <li><a href="{{route('settings.changepassword')}}"><i class="fa fa-key"></i>&nbsp;Change My Password</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{route('auth.logout')}}"><i class="fa fa-power-off"></i>&nbsp;Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

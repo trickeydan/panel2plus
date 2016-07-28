@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="jumbotron">
-                <h1>Hello,Peter</h1>
+                <h1>Hello, {{$user->first_name}}</h1>
                 <p>Welcome to the dashboard!</p>
                 <p><a class="btn btn-default" role="button" href="#">My Account</a></p>
             </div>
@@ -16,17 +16,20 @@
                     <thead>
                     <tr>
                         <th>Package Type</th>
+                        <th>Expires on</th>
                         <th>View </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
+                        <td>Shared Hosting Basic</td>
+                        <td>20/9/16</td>
+                        <td>View</td>
                     </tr>
                     <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
+                        <td>VPS 2</td>
+                        <td>20/9/16</td>
+                        <td>View</td>
                     </tr>
                     </tbody>
                 </table>

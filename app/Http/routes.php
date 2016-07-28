@@ -6,11 +6,50 @@ Route::group(['middleware' => ['auth']],function(){
         'uses' => 'DashboardController@dashboard',
         'as' => 'dashboard',
     ]);
+
+    Route::group(['namespace' => 'Settings','prefix' => 'settings'],function (){
+
+        Route::get('/',[
+            'uses' => 'SettingsController@index',
+            'as' => 'settings.index',
+        ]);
+
+        Route::get('changepassword',[
+            'uses' => 'PasswordController@form',
+            'as' => 'settings.changepassword',
+        ]);
+
+        Route::post('changepassword',[
+            'uses' => 'PasswordController@post',
+            'as' => 'settings.changepassword.post',
+        ]);
+    });
+
+
+
+
+
+
+
 });
 
-$this->get('login', 'Auth\AuthController@showLoginForm');
-$this->post('login', 'Auth\AuthController@login');
-$this->get('logout', 'Auth\AuthController@logout');
+Route::group(['namespace' => 'Auth'],function (){
+    Route::get('logout',[
+        'uses' => 'AuthController@logout',
+        'as'    => 'auth.logout',
+    ]);
+
+    Route::get('login',[
+        'uses' => 'AuthController@showLoginForm',
+        'as'    => 'auth.login',
+    ]);
+
+    Route::post('login',[
+        'uses' => 'AuthController@login',
+        'as'    => 'auth.loginPost',
+    ]);
+});
+
 
 // Registration Routes...
 //$this->get('register', 'Auth\AuthController@showRegistrationForm');
