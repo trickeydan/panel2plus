@@ -14,6 +14,16 @@ Route::group(['middleware' => ['auth']],function(){
             'as' => 'settings.index',
         ]);
 
+        Route::get('update',[
+            'uses' => 'ProfileController@form',
+            'as' => 'settings.update',
+        ]);
+
+        Route::put('update',[
+            'uses' => 'ProfileController@post',
+            'as' => 'settings.update.post',
+        ]);
+
         Route::get('changepassword',[
             'uses' => 'PasswordController@form',
             'as' => 'settings.changepassword',

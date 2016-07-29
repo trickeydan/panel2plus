@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">{{config('text.site_title')}}</a>
+        <div class="navbar-header"><a class="navbar-brand navbar-link" href="{{route('dashboard')}}">{{config('text.site_title')}}</a>
             <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
         <div class="collapse navbar-collapse" id="navcol-1">
@@ -24,7 +24,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;{{$user->name()}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+                        <li><a href="{{route('settings.index')}}"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
                         <li><a href="{{route('settings.changepassword')}}"><i class="fa fa-key"></i>&nbsp;Change My Password</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route('auth.logout')}}"><i class="fa fa-power-off"></i>&nbsp;Logout</a></li>

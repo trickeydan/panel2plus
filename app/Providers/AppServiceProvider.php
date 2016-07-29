@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Validator;
+use Panel\Managers\PageManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,12 +23,8 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        Blade::directive('breadcrumbs', function($expression) {
-            return "<ol class=\"breadcrumb\">
-              <li><a href=\"#\">Home</a></li>
-              <li><a href=\"#\">Library</a></li>
-              <li class=\"active\">Data</li>
-            </ol>";
+        Blade::directive('breadcrumbs', function() {
+            return PageManager::generateBreadcrumbs();
         });
 
         Validator::extend('pwdcorrect', function($attribute, $value, $parameters, $validator) {

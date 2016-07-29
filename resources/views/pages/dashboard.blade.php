@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>My Support Tickets</h1>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Reply From Support - RE: DNS Issues</h3></div>
                 <div class="panel-body"><span>Hello Peter,<br>Sorry that you've been having issues with the DNS. I have fixed it for you :)<br>Dan - Support Team<br></span>

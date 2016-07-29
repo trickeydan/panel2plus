@@ -10,6 +10,6 @@ use Panel\Http\Controllers\Controller;
 class SettingsController extends Controller
 {
     public function index(){
-        return 'Settings index';
+        return view('pages.settings.index');
     }
 }
