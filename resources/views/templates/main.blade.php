@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active" role="presentation"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>&nbsp;Dashboard </a></li>
-                <li role="presentation"><a href="#">DNS </a></li>
+                <li role="presentation"><a href="{{route('dns.index')}}"><i class="fa fa-server"></i>&nbsp;DNS</a></li>
                 <li role="presentation"><a href="#">Billing <span class="badge">1 </span> </a></li>
                 <li role="presentation"><a href="#">Support </a></li>
                 <li class="dropdown">

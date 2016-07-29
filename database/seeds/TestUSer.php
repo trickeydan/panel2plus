@@ -28,6 +28,11 @@ class TestUSer extends Seeder
         $u->country = Faker\Provider\en_GB\Address::country();
         $u->save();
 
+        $d = new \Panel\Domain;
+        $d->name = 'testdomain.test';
+        $d->user_id = $u->id;
+        $d->save();
+
 
     }
 }

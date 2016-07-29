@@ -33,8 +33,21 @@ Route::group(['middleware' => ['auth']],function(){
             'uses' => 'PasswordController@post',
             'as' => 'settings.changepassword.post',
         ]);
-    });
 
+
+
+    });
+    Route::group(['namespace' => 'DNS','prefix' => 'dns'],function (){
+        Route::get('/',[
+            'uses' => 'DomainController@index',
+            'as' => 'dns.index',
+        ]);
+
+        Route::get('{domain}',[
+            'uses' => 'DomainController@domain',
+            'as' => 'dns.domain',
+        ]);
+    });
 
 
 

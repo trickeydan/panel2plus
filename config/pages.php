@@ -19,6 +19,16 @@ return [
             'parent' => 'settings.index',
             'name'   => 'Change Password',
         ],
+
+        'dns.index' => [
+            'parent' => 'dashboard',
+            'name'   => 'DNS'
+        ],
+
+        'dns.domain' => [
+            'parent' => 'dns.index',
+            'name'   => 'View Domain'
+        ]
     ]
 
 ];

@@ -59,4 +59,8 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
+    public function domains(){
+        return $this->hasMany('Panel\Domain','user_id','id');
+    }
+
 }
