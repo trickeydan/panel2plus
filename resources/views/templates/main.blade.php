@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active" role="presentation"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>&nbsp;Dashboard </a></li>
-                <li role="presentation"><a href="{{route('dns.index')}}"><i class="fa fa-server"></i>&nbsp;DNS</a></li>
+                @if(\Illuminate\Support\Facades\Auth::User()->hasDNS())<li role="presentation"><a href="{{route('dns.index')}}"><i class="fa fa-server"></i>&nbsp;DNS</a></li>@endif
                 <li role="presentation"><a href="#">Billing <span class="badge">1 </span> </a></li>
                 <li role="presentation"><a href="#">Support </a></li>
                 <li class="dropdown">
@@ -37,8 +37,10 @@
 <div class="container">
     @yield('content')
 </div>
+
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+@yield('js','')
 </body>
 
 </html>

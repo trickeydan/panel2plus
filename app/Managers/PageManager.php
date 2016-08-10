@@ -4,6 +4,8 @@
 namespace Panel\Managers;
 
 
+use Illuminate\Support\Facades\Route;
+
 class PageManager
 {
     public static function generateBreadcrumbs()
@@ -13,10 +15,12 @@ class PageManager
 
     private static function getHtml($route,$current,$active = false){
 
+        $params = self::getParams($route);
         if($active){
             $me = "<li class=\"active\">" . self::getName($route) . "</li>";
         }else{
-            $me = "<li><a href=\"" . route($route) . "\">" . self::getName($route) . "</a></li>";
+            $me = "<li><a href=\"" . route($route,Route::current()->getParameter($params[0])) . "\">" . self::getName($route) . "</a></li>";
+
         }
 
         if(self::hasParent($route)){
@@ -37,5 +41,12 @@ class PageManager
 
     public static function getName($route){
         return config('pages.details')[$route]['name'];
+    }
+    public static function getParams($route){
+        if(isset(config('pages.details')[$route]['params'])){
+            return config('pages.details')[$route]['params'];
+        }
+        return null;
+
     }
 }

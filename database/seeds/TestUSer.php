@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Panel\Server;
 
 class TestUSer extends Seeder
 {
@@ -32,6 +33,11 @@ class TestUSer extends Seeder
         $d->name = 'testdomain.test';
         $d->user_id = $u->id;
         $d->save();
+
+        Server::create([
+            'name' => 'Amethyst Server',
+            'main_ip' => '178.62.10.20',
+        ]);
 
 
     }

@@ -63,4 +63,10 @@ class User extends Authenticatable
         return $this->hasMany('Panel\Domain','user_id','id');
     }
 
+    // Get Permissions
+
+    public function hasDNS(){
+        return true;
+    }
+
 }

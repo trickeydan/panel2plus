@@ -37,15 +37,45 @@ Route::group(['middleware' => ['auth']],function(){
 
 
     });
-    Route::group(['namespace' => 'DNS','prefix' => 'dns'],function (){
+    Route::group(['namespace' => 'DNS','prefix' => 'dns','middleware' => ['check:hasDNS']],function (){
         Route::get('/',[
             'uses' => 'DomainController@index',
             'as' => 'dns.index',
         ]);
 
+        Route::get('add',[
+            'uses' => 'DomainController@create',
+            'as' => 'dns.create',
+        ]);
+
+        Route::post('add',[
+            'uses' => 'DomainController@createPost',
+            'as' => 'dns.create',
+        ]);
+
         Route::get('{domain}',[
             'uses' => 'DomainController@domain',
             'as' => 'dns.domain',
+        ]);
+
+        Route::get('{domain}/delete',[
+            'uses' => 'DomainController@domainDelete',
+            'as' => 'dns.domain.delete',
+        ]);
+
+        Route::get('{domain}/new',[
+            'uses' => 'RecordController@newRecord',
+            'as' => 'dns.domain.record.new',
+        ]);
+
+        Route::post('{domain}/new',[
+            'uses' => 'RecordController@newRecordPost',
+            'as' => 'dns.domain.record.new.post',
+        ]);
+
+        Route::get('{domain}/{record}/delete',[
+            'uses' => 'RecordController@delete',
+            'as' => 'dns.domain.record.delete',
         ]);
     });
 

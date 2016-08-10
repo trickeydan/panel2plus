@@ -25,9 +25,20 @@ return [
             'name'   => 'DNS'
         ],
 
+        'dns.create' => [
+            'parent' => 'dns.index',
+            'name'   => 'Create Domain'
+        ],
+
         'dns.domain' => [
             'parent' => 'dns.index',
             'name'   => 'View Domain'
+        ],
+
+        'dns.domain.record.new' => [
+            'parent' => 'dns.domain',
+            'name'   => 'New Record',
+            'params' => ['domain'],
         ]
     ]
 
