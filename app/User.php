@@ -3,7 +3,7 @@
 namespace Panel;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Panel\Managers\ZipBookManager;
 class User extends Authenticatable
 {
     //use Encryptable;
@@ -26,37 +26,103 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    private $name;
+    private $email;
+    private $phone;
+    private $address_1;
+    private $address_2;
+    private $city;
+    private $state;
+    private $postal_code;
+
+    private $zb_update = [];
+
     public $fields = [
-        'first_name' => 'First Name',
-        'last_name' => 'Last Name',
-        'email' => 'Email',
-        'phone' => 'Phone Number',
-        'line1' => 'Address Line 1',
-        'line2' => 'Address Line 2',
-        'line3' => 'Address Line 3',
-        'line4' => 'Address Line 4',
-        'city' => 'City',
-        'county' => 'County',
-        'postcode' => 'Postcode',
-        'country' => 'Country',
-    ];
-    public $validation = [
-        'first_name' => 'required|max:50|min:2',
-        'last_name' => 'required|max:50|min:2',
-        'email' => 'required|email|max:50|min:2',
-        'phone' => 'required|max:50|min:2',
-        'line1' => 'required|max:50|min:2',
-        'line2' => 'required|max:50|min:2',
-        'line3' => 'required|max:50|min:2',
-        'line4' => 'required|max:50|min:2',
-        'city' => 'required|max:50|min:2',
-        'county' => 'required|max:50|min:2',
-        'postcode' => 'required|max:50|min:2',
-        'country' => 'required|max:50|min:2',
+        'name' => [
+            'title' => 'Name',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'both',
+        ],
+        'email' => [
+            'title'  => 'Email',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
+        'phone'  => [
+            'title'  => 'Phone Number',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
+        'address_1'  => [
+            'title'  => 'Address Line 1',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
+        'address_2'  => [
+            'title'  => 'Address Line 2',
+            'validation' => 'max:50|min:2',
+            'location' => 'zb',
+        ],
+        'city'  => [
+            'title'  => 'City',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
+        'state'  => [
+            'title'  => 'County',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
+        'postal_code'  => [
+            'title'  => 'Postcode',
+            'validation' => 'required|max:50|min:2',
+            'location' => 'zb',
+        ],
     ];
 
-    public function name(){
-        return $this->first_name . ' ' . $this->last_name;
+    public function __get($key)
+    {
+        if(isset($this->fields[$key]) && $this->fields[$key]['location'] == 'zb'){
+            return $this->getFromZB($key);
+        }else{
+            return $this->getAttribute($key);
+        }
+    }
+
+    public function __set($key, $value)
+    {
+        if(!isset($this->fields[$key]) || (isset($this->fields[$key]) && $this->fields[$key]['location'] != 'zb')){
+            $this->setAttribute($key, $value);
+        }
+        if(isset($this->fields[$key]) && $this->fields[$key]['location'] != 'local'){
+            $this->setToZB($key,$value);
+        }
+
+
+    }
+
+    public function getFromZB($key){
+        if(!isset($this->zb)){
+            $zb = new ZipBookManager();
+            $this->zb = $zb->getClient($this->zb_id);
+        }
+        if(isset($this->zb->$key)) return $this->zb->$key;
+    }
+
+    public function setToZB($key,$value){
+        $this->zb_update[$key] = $value;
+    }
+    public function saveZB(){
+        $zb = new ZipBookManager();
+        $res = $zb->setClient($this->zb_id,$this->zb_update);
+        $this->zb_update = [];
+        return $res;
+    }
+
+    public function save(array $options = [])
+    {
+        $this->saveZB();
+        return parent::save($options);
     }
 
     public function domains(){

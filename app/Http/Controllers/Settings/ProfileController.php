@@ -16,7 +16,11 @@ class ProfileController extends Controller
 
     public function post(Request $request){
         $user = Auth::User();
-        $this->validate($request,$user->validation);
+        $arr = [];
+        foreach($user->fields as $field => $data){
+            $arr[$field] = $data['validation'];
+        }
+        $this->validate($request,$arr);
         foreach($user->fields as $field => $name){
             $user->$field = $request->$field;
         }

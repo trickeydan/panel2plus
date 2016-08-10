@@ -22,9 +22,9 @@
                 <!-- Table -->
                 <table class="table">
                     <tbody>
-                        @foreach($user->fields as $field => $name)
+                        @foreach($user->fields as $field => $data)
                             <tr>
-                                <td>{{$name}}</td>
+                                <td>{{$data['title']}}</td>
                                 <td>{{$user->$field}}</td>
                             </tr>
                         @endforeach

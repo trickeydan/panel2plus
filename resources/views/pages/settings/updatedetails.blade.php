@@ -13,10 +13,10 @@
         </ul>
     </div>
     @endif
-    @foreach($user->fields as $field => $name)
+    @foreach($user->fields as $field => $data)
         <div class="form-group">
-            {!! Form::label($field, $name) !!}
-            {!! Form::text($field,null,['class' => 'form-control']) !!}
+            {!! Form::label($field, $data['title']) !!}
+            {!! Form::text($field,$user->$field,['class' => 'form-control']) !!}
         </div>
     @endforeach
     <a href="{{route('settings.index')}}"><p class="btn btn-lg btn-danger">Back to Settings</p></a>

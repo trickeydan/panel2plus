@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6167d0b264047b2c9d19e576541e18dd",
-    "content-hash": "d6835b3cf87e66000c5b2897c66140ae",
+    "hash": "c248b62791a833886504be2e30e2ba49",
+    "content-hash": "bb086ec7d18d762eff34ec56a8b3d039",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -160,6 +160,67 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "eljam/guzzle-jwt-middleware",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eljam/guzzle-jwt-middleware.git",
+                "reference": "9546463c375fc22f57b67b266c9152de14b70faf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eljam/guzzle-jwt-middleware/zipball/9546463c375fc22f57b67b266c9152de14b70faf",
+                "reference": "9546463c375fc22f57b67b266c9152de14b70faf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "php": ">=5.5.0",
+                "symfony/options-resolver": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.5",
+                "satooshi/php-coveralls": "^0.6.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eljam\\GuzzleJwt\\": [
+                        "src/",
+                        "Tests/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guillaume Cavana",
+                    "email": "guillaume.cavana@gmail.com"
+                }
+            ],
+            "description": "A jwt authentication middleware for guzzle 6",
+            "homepage": "https://github.com/eljam/guzzle-jwt-middleware",
+            "keywords": [
+                "Guzzle",
+                "auth",
+                "guzzle6",
+                "handler",
+                "http",
+                "jwt",
+                "middleware",
+                "psr7"
+            ],
+            "time": "2016-01-26 15:55:17"
         },
         {
             "name": "graham-campbell/digitalocean",
@@ -1714,6 +1775,60 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "time": "2016-07-30 09:10:37"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "30605874d99af0cde6c41fd39e18546330c38100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/30605874d99af0cde6c41fd39e18546330c38100",
+                "reference": "30605874d99af0cde6c41fd39e18546330c38100",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2016-05-12 15:59:27"
         },
         {
             "name": "symfony/polyfill-mbstring",

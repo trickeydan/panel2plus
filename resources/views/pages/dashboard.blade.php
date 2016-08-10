@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="jumbotron">
-                <h1>Hello, {{$user->first_name}}</h1>
+                <h1>Hello, {{$user->name}}</h1>
                 <p>Welcome to the dashboard!</p>
                 <p><a class="btn btn-default" role="button" href="#">My Account</a></p>
             </div>
