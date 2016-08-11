@@ -99,6 +99,8 @@ return [
         ],
     ],
 
+    'pwdcorrect'  => 'The password you entered didn\'t match your password.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

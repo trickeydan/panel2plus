@@ -5,7 +5,11 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "laravelcollective/html": "^5.2",
+        "graham-campbell/digitalocean": "^3.1",
+        "guzzlehttp/guzzle": "^6.2",
+        "eljam/guzzle-jwt-middleware": "^0.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
