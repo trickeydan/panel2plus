@@ -17,15 +17,15 @@
         </div>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active" role="presentation"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>&nbsp;Dashboard </a></li>
-                @if(\Illuminate\Support\Facades\Auth::User()->hasDNS())<li role="presentation"><a href="{{route('dns.index')}}"><i class="fa fa-server"></i>&nbsp;DNS</a></li>@endif
+                <li <?php if(\Request::route()->getName() == 'dashboard') echo 'class="active"';?> role="presentation"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i>&nbsp;Dashboard </a></li>
+                @if(\Illuminate\Support\Facades\Auth::User()->hasDNS())<li <?php if(\Request::route()->getName() == 'dns.index') echo 'class="active"';?> role="presentation"><a href="{{route('dns.index')}}"><i class="fa fa-server"></i>&nbsp;DNS</a></li>@endif
                 <li role="presentation"><a href="#">Billing <span class="badge">1 </span> </a></li>
                 <li role="presentation"><a href="#">Support </a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;{{$user->name}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{route('settings.index')}}"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
-                        <li><a href="{{route('settings.changepassword')}}"><i class="fa fa-key"></i>&nbsp;Change My Password</a></li>
+                        <li <?php if(\Request::route()->getName() == 'settings.index') echo 'class="active"';?>><a href="{{route('settings.index')}}"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+                        <li <?php if(\Request::route()->getName() == 'settings.changepassword') echo 'class="active"';?>><a href="{{route('settings.changepassword')}}"><i class="fa fa-key"></i>&nbsp;Change My Password</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route('auth.logout')}}"><i class="fa fa-power-off"></i>&nbsp;Logout</a></li>
                     </ul>
